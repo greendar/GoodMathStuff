@@ -34,6 +34,8 @@ class Quadratic:
     def __str__(self):
         if self.a == 1:
             return f"x\N{SUPERSCRIPT TWO}{self.coeffB()}{self.coeffC()}"
+        elif self.a == -1:
+            return f"-x\N{SUPERSCRIPT TWO}{self.coeffB()}{self.coeffC()}"
         else:
             return f"{self.a}x\N{SUPERSCRIPT TWO} + {self.coeffB()}x + {self.coeffC()}"
 
@@ -46,7 +48,6 @@ class SimpleF(Quadratic):
         self.c = getCoeff()
 
 
-if __name__ == "__main__":
     for i in range(10):
         a = SimpleF()
         print(a)
