@@ -31,6 +31,9 @@ class Quadratic:
         else:
             return f" + {self.c}"
 
+    def discr(self):
+        return (self.b)**2 - 4*self.a*self.c
+
     def __str__(self):
         if self.a == 1:
             return f"x\N{SUPERSCRIPT TWO}{self.coeffB()}{self.coeffC()}"
@@ -55,10 +58,9 @@ class Quadratic:
         """
         Returns the number of roots that a quadratic has (0, 1, 2)
         """
-        discr = (self.b)**2 - 4*self.a*self.c
-        if discr > 0:
+        if self.discr() > 0:
             return 2
-        elif discr == 0:
+        elif self.discr() == 0:
             return 1
         else:
             return 0
