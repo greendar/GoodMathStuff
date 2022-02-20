@@ -88,7 +88,6 @@ class SimpleF(Quadratic):
         self.c = getCoeff()
 
 
-<<<<<<< HEAD
 
 #*****************************************************************
 if __name__ == "__main__":
@@ -96,8 +95,3 @@ if __name__ == "__main__":
     testB = Quadratic(1, 2, 4)
     testC = Quadratic(1, 4, 4)
     testA.report()
-=======
-    for i in range(10):
-        a = SimpleF()
-        print(a)
->>>>>>> 70bfde6a4f049955e2dcf63ca451f3bcdc6ba36b
