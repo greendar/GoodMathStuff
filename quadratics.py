@@ -6,6 +6,7 @@ def getCoeff():
     return random.randint(-6, 6)
 
 class Quadratic:
+
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
@@ -49,7 +50,12 @@ class Quadratic:
             return f"{self.a}x\N{SUPERSCRIPT TWO} + {self.b}x + {self.c}"
 
     def quadraticVF(self):
-        return "Vertex Form"
+        self.h = self.b/(2*self.a)
+        self.k = self.c - (self.b**2)/(4*self.a)
+        if self.a == 1:
+            return f"(x+{self.h})\N{SUPERSCRIPT TWO} + {self.k}"
+        else:
+            return f"{self.a}(x+{self.h})\N{SUPERSCRIPT TWO} + {self.k}"
 
     def quadraticFF(self):
         return "Factored Form"
