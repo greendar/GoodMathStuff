@@ -12,7 +12,7 @@ class Quadratic:
         self.b = b
         self.c = c
 
-    def coeffB(self):
+    def outCoeffB(self):
         if self.b == 0:
             return ""
         elif self.b == 1:
@@ -24,7 +24,7 @@ class Quadratic:
         else:
             return f" + {self.b}x"
 
-    def coeffC(self):
+    def outCoeffC(self):
         if self.c == 0:
             return ""
         elif self.c < 0:
@@ -37,11 +37,11 @@ class Quadratic:
 
     def __str__(self):
         if self.a == 1:
-            return f"x\N{SUPERSCRIPT TWO}{self.coeffB()}{self.coeffC()}"
+            return f"x\N{SUPERSCRIPT TWO}{self.outCoeffB()}{self.outCoeffC()}"
         elif self.a == -1:
-            return f"-x\N{SUPERSCRIPT TWO}{self.coeffB()}{self.coeffC()}"
+            return f"-x\N{SUPERSCRIPT TWO}{self.outCoeffB()}{self.outCoeffC()}"
         else:
-            return f"{self.a}x\N{SUPERSCRIPT TWO} + {self.coeffB()}x + {self.coeffC()}"
+            return f"{self.a}x\N{SUPERSCRIPT TWO} + {self.outCoeffB()}x + {self.outCoeffC()}"
 
     def quadraticSF(self):
         if self.a == 1:
@@ -100,6 +100,8 @@ class SimpleF(Quadratic):
 #*****************************************************************
 if __name__ == "__main__":
     testA = Quadratic(1, 5, 6)
-    testB = Quadratic(1, 2, 4)
-    testC = Quadratic(1, 4, 4)
-    testA.report()
+    testB = Quadratic(1, -2, 4)
+    testC = Quadratic(1, 4, -4)
+    print("A", testA)
+    print("B", testB)
+    print("C", testC)
