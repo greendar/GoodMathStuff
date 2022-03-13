@@ -22,18 +22,20 @@ class Vector:
     def k(self):
         return self.z
 
+    def dot(self, other):
+        return self.i() * other.i() + self.j() * other.j() + self.k() * other.k()
 
-def dotProduct(aVec, bVec):
-    return aVec.i() * bVec.i() + aVec.j() * bVec.j() + aVec.k() * bVec.k()
+    def cross(self, other):
+        xComp = self.j() * other.k() - self.k() * other.j()
+        yComp = self.k() * other.i() - self.i() * other.k()
+        zComp = self.i() * other.j() - self.j() * other.i()
+        cVec = Vector(xComp, yComp, zComp)
+        return cVec
 
-def crossProduct(aVec, bVec):
-    xComp = aVec.j() * bVec.k() - aVec.k() * bVec.j()
-    yComp = aVec.k() * bVec.i() - aVec.i() * bVec.k()
-    zComp = aVec.i() * bVec.j() - aVec.j() * bVec.i()
-    cVec = Vector(xComp, yComp, zComp)
-    return cVec
+    def angle(self, other):
+        return math.degrees(math.acos(self.dot(other)/(self.mag()*other.mag())))
 
 if __name__ == '__main__':
-    a = Vector(1,2,3)
-    b = Vector(2,3)
-    print(b)
+    a = Vector(1,0,0)
+    b = Vector(0,1,0)
+    print(a.angle(b))
