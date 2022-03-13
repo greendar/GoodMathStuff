@@ -2,7 +2,7 @@
 
 class NonLineError(Exception):
 
-    def __init__(self, m, message = "A line cannot have 0 slope0"):
+    def __init__(self, m, message = "A line cannot have 0 slope"):
         pass
         """THIS IS NOT TRUE
         Need to add code for vertical and horizontal lines

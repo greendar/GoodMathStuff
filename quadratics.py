@@ -16,6 +16,7 @@ class Quadratic:
             raise NonQuadraticError(self.a)
 
     def outCoeffB(self):
+        """Used for printing B."""
         if self.b == 0:
             return ""
         elif self.b == 1:
@@ -28,6 +29,7 @@ class Quadratic:
             return f" + {self.b}x"
 
     def outCoeffC(self):
+        """Used for printing C."""
         if self.c == 0:
             return ""
         elif self.c < 0:
