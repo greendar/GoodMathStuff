@@ -35,7 +35,26 @@ class Vector:
     def angle(self, other):
         return math.degrees(math.acos(self.dot(other)/(self.mag()*other.mag())))
 
+class vLine:
+    def __init__(self, pVec, dVec):
+        self.pVec = pVec
+        self.dVec = dVec
+
+    def __str__(self):
+        return f"r = {self.pVec} + t{self.dVec}"
+
+class vPlane:
+    def __init__(self, pVec, d1Vec, d2Vec):
+        self.pVec = pVec
+        self.d1Vec = d1Vec
+        self.d2Vec = d2Vec
+
+    def __str__(self):
+        return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
+
 if __name__ == '__main__':
-    a = Vector(1,0,0)
-    b = Vector(0,1,0)
-    print(a.angle(b))
+    a = Vector(1,2, 4)
+    b = Vector(4,1,3)
+    c = Vector(3,5,6)
+    plane = vPlane(a, b, c)
+    print(plane)
