@@ -52,9 +52,13 @@ class vPlane:
     def __str__(self):
         return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
 
+    def normal(self):
+        return self.d1Vec.cross(self.d2Vec)
+
 if __name__ == '__main__':
     a = Vector(1,2, 4)
     b = Vector(4,1,3)
     c = Vector(3,5,6)
     plane = vPlane(a, b, c)
     print(plane)
+    print(plane.normal())
