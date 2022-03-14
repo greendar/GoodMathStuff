@@ -1,4 +1,4 @@
-
+import points
 
 class Line:
 
@@ -26,6 +26,12 @@ class Line:
         else:
             return f" + {self.b}"
 
+    def intersect(self, other):
+        x = (other.b - self.b)/(self.m - other.m)
+        y = other.m * x + other.b
+        return points.Point(x, y)
+
+
     def __str__(self):
         if self.m == 1:
             return f"x{self.outCoeffB()}"
@@ -40,6 +46,4 @@ if __name__ == "__main__":
     testA = Line(11, 5)
     testB = Line(0, -2)
     testC = Line(-4, 4)
-    print("A", testA)
-    print("B", testB)
-    print("C", testC)
+    print("A", testA.intersect(testC))
