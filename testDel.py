@@ -1,6 +1,18 @@
+class AltPlane:
+    def __init__(self, *args):
+        if len(args) == 3:
+            print("Vector Form", args[1])
+        elif len(args) == 4:
+            print("Standard Form")
+        else:
+            print("potato")
+
+
+j = AltPlane(1,2,3)
+k = AltPlane(1,2,3,4)
+
 """
 Creates the function doMath that will do different things depending on how many arguments are passed
-"""
 
 def doMath(*args):
     a = args
@@ -24,3 +36,4 @@ print(doMath(1,2,3))
 print(doMath(1,2))
 print(doMath(1))
 print(doMath())
+"""
