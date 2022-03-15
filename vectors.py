@@ -45,31 +45,80 @@ class vLine:
 class VPlane:
     def __init__(self, *args):
         if len(args) == 3:
-            print("Vector Form")
             self.pVec = args[0]
             self.d1Vec = args[1]
             self.d2Vec = args[2]
             self.form = "VF"
         elif len(args) == 4:
-            print("Standard Form")
             self.a = args[0]
             self.b = args[1]
             self.c = args[2]
             self.d = args[3]
             self.form = "SF"
         else:
-            print("potato")
+            print("potato")################
 
+    def normal(self):
+        return self.d1Vec.cross(self.d2Vec)
+
+    def outCoeffA(self):
+        if self.a == 0:
+            return ""
+        elif self.a == 1:
+            return f"x"
+        elif self.a == -1:
+            return f" - x"
+        elif self.a < 0:
+            return f" -{abs(self.a)}x"
+        else:
+            return f"{self.a}x"
+
+    def outCoeffB(self):
+        if self.b == 0:
+            return ""
+        elif self.b == 1:
+            return f" + y"
+        elif self.b == -1:
+            return f" - y"
+        elif self.b < 0:
+            return f" - {abs(self.b)}y"
+        else:
+            return f" + {self.b}y"
+
+    def outCoeffC(self):
+        if self.c == 0:
+            return ""
+        elif self.c == 1:
+            return f" + z"
+        elif self.c == -1:
+            return f" - z"
+        elif self.c < 0:
+            return f" - {abs(self.c)}z"
+        else:
+            return f" + {self.c}z"
+
+    def outCoeffD(self):
+        if self.d == 0:
+            return ""
+        elif self.d < 0:
+            return f" - {abs(self.d)}"
+        else:
+            return f" + {self.d}"
 
     def __str__(self):
         if self.form == "VF":
             return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
         elif self.form == "SF":
-            return f"{self.a}x + {self.b}y + {self.c}z + {self.d} = 0"
+            return f"{self.outCoeffA()}{self.outCoeffB()}{self.outCoeffC()}{self.outCoeffD()} = 0"
 
-    def normal(self):
-        return self.d1Vec.cross(self.d2Vec)
 
 if __name__ == '__main__':
-    a = VPlane(1,2,3,4)
-    print(a, a.form)
+    import random
+    for i in range(10):
+        a = random.randint(-5, 5)
+        b = random.randint(-5, 5)
+        c = random.randint(-5, 5)
+        d = random.randint(-5, 5)
+        aPlane = VPlane(a, b, c, d)
+        print(aPlane)
+        del(aPlane)
