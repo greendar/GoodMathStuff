@@ -42,22 +42,34 @@ class vLine:
     def __str__(self):
         return f"r = {self.pVec} + t{self.dVec}"
 
-class vPlane:
-    def __init__(self, pVec, d1Vec, d2Vec):
-        self.pVec = pVec
-        self.d1Vec = d1Vec
-        self.d2Vec = d2Vec
+class VPlane:
+    def __init__(self, *args):
+        if len(args) == 3:
+            print("Vector Form")
+            self.pVec = args[0]
+            self.d1Vec = args[1]
+            self.d2Vec = args[2]
+            self.form = "VF"
+        elif len(args) == 4:
+            print("Standard Form")
+            self.a = args[0]
+            self.b = args[1]
+            self.c = args[2]
+            self.d = args[3]
+            self.form = "SF"
+        else:
+            print("potato")
+
 
     def __str__(self):
-        return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
+        if self.form == "VF":
+            return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
+        elif self.form == "SF":
+            return f"{self.a}x + {self.b}y + {self.c}z + {self.d} = 0"
 
     def normal(self):
         return self.d1Vec.cross(self.d2Vec)
 
 if __name__ == '__main__':
-    a = Vector(1,2, 4)
-    b = Vector(4,1,3)
-    c = Vector(3,5,6)
-    plane = vPlane(a, b, c)
-    print(plane)
-    print(plane.normal())
+    a = VPlane(1,2,3,4)
+    print(a, a.form)
