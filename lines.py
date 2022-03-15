@@ -9,20 +9,18 @@ class Line:
     def outCoeffM(self):
         if self.m == 0:
             return ""
-        elif self.m == 1:
-            return f" + x"
-        elif self.m == -1:
-            return f" - x"
         elif self.m < 0:
-            return f" - {abs(self.m)}x"
+            return f"-{abs(self.m)}x"
         else:
-            return f" + {self.m}x"
+            return f"{self.m}x"
 
     def outCoeffB(self):
         if self.b == 0:
             return ""
+        elif self.b < 0 and self.m == 0:
+            return f"-{abs(self.b)}"
         elif self.b < 0:
-            return f" - {abs(self.b)}"
+            return f"- {abs(self.b)}"
         else:
             return f" + {self.b}"
 
@@ -34,16 +32,21 @@ class Line:
 
     def __str__(self):
         if self.m == 1:
-            return f"x{self.outCoeffB()}"
+            return f"y = x{self.outCoeffB()}"
         elif self.m == -1:
-            return f"-x{self.outCoeffB()}"
+            return f"y = -x{self.outCoeffB()}"
+        elif self.m == 0 and self.b > 0:
+            return f"y = {self.b}"
         else:
-            return f"{self.outCoeffM()}x{self.outCoeffB()}"
+            return f"y = {self.outCoeffM()}{self.outCoeffB()}"
 
 
 #**********************************************************
 if __name__ == "__main__":
-    testA = Line(11, 5)
-    testB = Line(0, -2)
-    testC = Line(-4, 4)
-    print("A", testA.intersect(testC))
+    import random
+    for i in range(20):
+        a = random.randint(-5, 5)
+        b = random.randint(-5, 5)
+        aLine = Line(a, b)
+        print(aLine)
+        del(aLine)
