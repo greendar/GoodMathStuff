@@ -56,7 +56,7 @@ class VPlane:
             self.d = args[3]
             self.form = "SF"
         else:
-            print("potato")################
+            print("Unrecognized Form")################
 
     def normal(self):
         return self.d1Vec.cross(self.d2Vec)
@@ -69,7 +69,7 @@ class VPlane:
         elif self.a == -1:
             return f" - x"
         elif self.a < 0:
-            return f" -{abs(self.a)}x"
+            return f"-{abs(self.a)}x"
         else:
             return f"{self.a}x"
 
@@ -105,6 +105,67 @@ class VPlane:
         else:
             return f" + {self.d}"
 
+
+    def threePoints(self):
+        """
+        This method will use the intersection of two sets of factors to find a solution
+        for two values of x/y/z. It is assumed that the other is equal to zero.
+        Coefficients are:
+        self.a = x Var
+        self.b = y Var
+        self.c = z Var
+        self.d = constant
+
+        CURRENT ERROR
+        2x + 2y - z - 2 = 0   ==>   [1, 0, 0] Good
+                                    [2, 1, 0] Bad, should be [2, -1, 0]
+                                    [0, 1, 0]
+
+        """
+        aList = []
+        bList = []
+
+        for i in range(-5, 5):
+            aList.append(self.a*i+self.d)
+            bList.append(self.b*i)
+
+        aOut = set(aList)
+        bOut = set(bList)
+        intersectOut = aOut.intersection(bOut)
+# what to do if intersectOut is an empty set
+        outList = []
+        for item in intersectOut:
+            tempList = []
+            tempList.append(int((item-self.d)/self.a))
+            tempList.append(int(item/self.b))
+            tempList.append(int(0))
+            outList.append(tempList)
+            if len(outList) == 2:
+                break
+
+        bList = []
+        cList = []
+
+        for i in range(-5, 5):
+            bList.append(self.b*i+self.d)
+            cList.append(self.c*i)
+
+        bOut = set(bList)
+        cOut = set(cList)
+        intersectOut = bOut.intersection(cOut)
+# what to do if intersectOut is an empty set
+        for item in intersectOut:
+            tempList = []
+            tempList.append(int(0))
+            tempList.append(int((item-self.d)/self.b))
+            tempList.append(int(item/self.c))
+            outList.append(tempList)
+            if len(outList) == 3:
+                break
+
+        return outList
+
+
     def __str__(self):
         if self.form == "VF":
             return f"r = {self.pVec} + s{self.d1Vec} +  t{self.d2Vec}"
@@ -114,11 +175,18 @@ class VPlane:
 
 if __name__ == '__main__':
     import random
+
+    def nonZero():
+        while True:
+            num = random.randint(-5, 5)
+            if num != 0:
+                return num
+
     for i in range(10):
-        a = random.randint(-5, 5)
-        b = random.randint(-5, 5)
-        c = random.randint(-5, 5)
-        d = random.randint(-5, 5)
+        a = nonZero()
+        b = nonZero()
+        c = nonZero()
+        d = nonZero()
         aPlane = VPlane(a, b, c, d)
-        print(aPlane)
+        print(aPlane, aPlane.threePoints())
         del(aPlane)
