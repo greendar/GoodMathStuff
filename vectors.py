@@ -67,7 +67,7 @@ class VPlane:
         elif self.a == 1:
             return f"x"
         elif self.a == -1:
-            return f" - x"
+            return f"-x"
         elif self.a < 0:
             return f"-{abs(self.a)}x"
         else:
