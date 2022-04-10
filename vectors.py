@@ -9,8 +9,14 @@ class Vector:
     def __str__(self):
         return f"[{self.x}, {self.y}, {self.z}]"
 
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
+
     def mag(self):
-        return round((self.x**2 + self.y**2 + self.z**2)**0.5, 2)
+        return round((self.x**2 + self.y**2 + self.z**2)**0.5, 4)
 
     def i(self):
         return self.x
@@ -173,20 +179,23 @@ class VPlane:
             return f"{self.outCoeffA()}{self.outCoeffB()}{self.outCoeffC()}{self.outCoeffD()} = 0"
 
 
+
 if __name__ == '__main__':
-    import random
-
-    def nonZero():
-        while True:
-            num = random.randint(-5, 5)
-            if num != 0:
-                return num
-
-    for i in range(10):
-        a = nonZero()
-        b = nonZero()
-        c = nonZero()
-        d = nonZero()
-        aPlane = VPlane(a, b, c, d)
-        print(aPlane, aPlane.threePoints())
-        del(aPlane)
+    def printAll():
+        print('A = ', A)
+        print('B = ', B)
+        print('C = ', C)
+        print('D = ', D)
+        print('E = ', E)
+    A = Vector(1, 2, 3)
+    B = Vector(-2, -4, -6)
+    C = Vector(-1, 2, 3)
+    D = A + C
+    E = A - C
+    print('angle A and C: ', A.angle(C))
+    print('dot product : ', A.dot(C))
+    print('mag A: ', A.mag())
+    print('mag C: ', C.mag())
+    print('e cross d', E.cross(D))
+    print('a cross c', A.cross(C))
+    printAll()
