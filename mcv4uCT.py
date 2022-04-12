@@ -1,9 +1,23 @@
 from vectors import *
 
-u = Vector(-15, 12, -33)
-v = Vector(5, -4, 13)
+A = Vector(3, 5, -2)
+B = Vector(6, 10, -4)
+C = Vector(4, 1, -3)
+F = Vector(-3, -7, -22)
 
-if v.checkParallel(u):
-    print('Parallel')
-else:
-    print('Not Parallel')
+report = f"""Page 1
+A = {A}
+B = {B}  {A.checkParallel(B)}
+C = {C}
+A+C = {A+C}
+A-C = {A-C}
+F = {F} {A.checkPerpendicular(F)}
+
+Page 2
+magA = {A.mag()}
+
+AdotC = {A.dot(C)}   AcrossC = {A.cross(C)}
+AangleC = {int(round(A.angle(C), 0))} deg
+
+"""
+print(report)

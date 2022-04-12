@@ -9,6 +9,12 @@ class Vector:
     def __str__(self):
         return f"[{self.x}, {self.y}, {self.z}]"
 
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
+
     def mag(self):
         return round((self.x**2 + self.y**2 + self.z**2)**0.5, 2)
 
@@ -39,6 +45,12 @@ class Vector:
         Checks if two vectors are scalar multiples of each other and returns True or False
         """
         if self.x/other.x == self.y/other.y and self.x/other.x == self.z/other.z:
+            return True
+        else:
+            return False
+
+    def checkPerpendicular(self, other):
+        if self.dot(other) == 0:
             return True
         else:
             return False
