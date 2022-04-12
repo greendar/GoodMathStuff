@@ -34,6 +34,16 @@ class Vector:
     def angle(self, other):
         return math.degrees(math.acos(self.dot(other)/(self.mag()*other.mag())))
 
+    def checkParallel(self, other):
+        """
+        Checks if two vectors are scalar multiples of each other and returns True or False
+        """
+        if self.x/other.x == self.y/other.y and self.x/other.x == self.z/other.z:
+            return True
+        else:
+            return False
+
+
 class vLine:
     def __init__(self, pVec, dVec):
         self.pVec = pVec
