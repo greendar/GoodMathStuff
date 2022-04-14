@@ -7,7 +7,10 @@ class Vector:
         self.z = z
 
     def __str__(self):
-        return f"[{self.x}, {self.y}, {self.z}]"
+        if self.z == 0:
+            return f"[{self.x}, {self.y}]"
+        else:
+            return f"[{self.x}, {self.y}, {self.z}]"
 
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
@@ -15,6 +18,8 @@ class Vector:
     def __sub__(self, other):
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
+    def scalarMult(self, scalar):
+        return Vector(round(self.x*scalar, 3), round(self.y*scalar, 3), round(self.z*scalar, 3))
     def mag(self):
         return round((self.x**2 + self.y**2 + self.z**2)**0.5, 2)
 
