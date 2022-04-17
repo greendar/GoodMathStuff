@@ -43,6 +43,9 @@ class Vector:
         return cVec
 
     def angle(self, other):
+        """
+        Returns the angle in degrees between two vectors
+        """
         return math.degrees(math.acos(self.dot(other)/(self.mag()*other.mag())))
 
     def checkParallel(self, other):
