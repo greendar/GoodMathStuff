@@ -58,9 +58,9 @@ class Quadratic:
         self.h = self.b/(2*self.a)
         self.k = self.c - (self.b**2)/(4*self.a)
         if self.a == 1:
-            return f"(x+{self.h})\N{SUPERSCRIPT TWO} + {self.k}"
+            return f"(x+{int(self.h)})\N{SUPERSCRIPT TWO} + {int(self.k)}"
         else:
-            return f"{self.a}(x+{self.h})\N{SUPERSCRIPT TWO} + {self.k}"
+            return f"{self.a}(x+{int(self.h)})\N{SUPERSCRIPT TWO} + {int(self.k)}"
 
     def quadraticFF(self):
         return "Factored Form"
