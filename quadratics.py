@@ -106,7 +106,8 @@ class SimpleF(Quadratic):
 if __name__ == "__main__":
     testA = Quadratic(1, 5, 6)
     testB = Quadratic(1, -2, 4)
-    testC = Quadratic(0, 4, -4)
+    testC = Quadratic(1, 4, -4)
     print("A", testA)
     print("B", testB)
     print("C", testC)
+    testA.report()

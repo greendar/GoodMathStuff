@@ -15,3 +15,8 @@ class NonQuadraticError(Exception):
         self.a = a
         self.message = message
         super().__init__(self.message)
+
+class InvalidPermutationError(Exception):
+    def __init__(self, message = "Cannot permute more than number or items"):
+        self.message = message
+        super().__init__(self.message)

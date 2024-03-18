@@ -1,3 +1,5 @@
+from mathErrors import InvalidPermutationError
+
 def fact(n):
     prod = 1
     if n == 0:
@@ -8,6 +10,8 @@ def fact(n):
     return prod
 
 def perm(n, r):
+    if r > n:
+        raise InvalidPermutationError
     return int(fact(n)/fact(n-r))
 
 def comb(n, r):
@@ -15,9 +19,16 @@ def comb(n, r):
 
 def pascal(n):
     for i in range(n+1):
+        print(2**i, ' *** ', end=" ")
         for j in range(i+1):
-            print(comb(i, j), end=" ")
+            print(comb(i, j), end=" / ")
+        print()
+
+def pascalProb(n):
+    for i in range(n+1):
+        for j in range(i+1):
+            print(comb(i, j)/2**i, end=" / ")
         print()
 
 
-print(pascal(15))
+print(pascalProb(5))
